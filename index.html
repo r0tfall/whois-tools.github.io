@@ -118,7 +118,7 @@
          }
          else
           {
-            $.get('http://api.scrapestack.com/scrape?access_key=642e8723f1e9888f60c5859e0273df86&url=https://api.hackertarget.com/reverseiplookup/?q=' + HOST1, function(DATA) {
+            $.get('https://api.scrapestack.com/scrape?access_key=642e8723f1e9888f60c5859e0273df86&url=https://api.hackertarget.com/reverseiplookup/?q=' + HOST1, function(DATA) {
             document.getElementById("output_look").innerHTML = "<pre>" + DATA + "</pre>";
             if (DATA=="error check your search parameter")
             {
@@ -171,7 +171,7 @@
          }
          else
           {
-            $.get('http://api.scrapestack.com/scrape?access_key=642e8723f1e9888f60c5859e0273df86&url=https://api.hackertarget.com/dnslookup/?q=' + HOST2, function(DATA) {
+            $.get('https://api.scrapestack.com/scrape?access_key=642e8723f1e9888f60c5859e0273df86&url=https://api.hackertarget.com/dnslookup/?q=' + HOST2, function(DATA) {
             document.getElementById("output_dns").innerHTML = "<pre>" + DATA + "</pre>";
             if (DATA=="error check your search parameter")
             {
