@@ -119,11 +119,13 @@
          }
          else
           {
+          	var ERROR = "LOADING!"
+            document.getElementById("output_look").innerHTML = ERROR;
             $.get('https://api.scraperapi.com/?api_key=27c6bbde3df6213309b4184db5b4c628&url=https://api.hackertarget.com/reverseiplookup/?q=' + HOST1, function(DATA) {
             document.getElementById("output_look").innerHTML = "<pre>" + DATA + "</pre>";
             if (DATA=="error check your search parameter")
             {
-               var ERROR = "undefined"
+               var ERROR = "ERROR: INVALID SEARCH PARAMETER!"
                document.getElementById("output_look").innerHTML = ERROR;
             }
             else {
@@ -136,13 +138,13 @@
                else {
                   if (DATA=="No DNS A records found for " + HOST1)
                   {
-                     var WARNING = "undefined"
+                     var WARNING = "ERROR: NO DNS RECORDS!"
                      document.getElementById("output_look").innerHTML = WARNING;
                   }
                   else {
                     if (DATA=="No DNS A records found for 172.253.122.106")
                     {
-                       var WARNING = "undefined"
+                       var WARNING = "NO DNS RECORDS FOR GOOGLE!"
                        document.getElementById("output_look").innerHTML = WARNING;
                     }
                  }
@@ -165,11 +167,13 @@
          }
          else
           {
+          	var ERROR = "LOADING!"
+            document.getElementById("output_dns").innerHTML = ERROR;
             $.get('https://api.scraperapi.com/?api_key=27c6bbde3df6213309b4184db5b4c628&url=https://api.hackertarget.com/dnslookup/?q=' + HOST2, function(DATA) {
             document.getElementById("output_dns").innerHTML = "<pre>" + DATA + "</pre>";
             if (DATA=="error check your search parameter")
             {
-               var ERROR = "undefined"
+               var ERROR = "ERROR: INVALID SEARCH PARAMETER!"
                document.getElementById("output_dns").innerHTML = ERROR;
             }
             else {
@@ -182,19 +186,19 @@
                else {
                   if (DATA=="No DNS A records found for " + HOST2)
                   {
-                     var WARNING = "undefined"
+                     var WARNING = "ERROR: NO DNS RECORDS!"
                      document.getElementById("output_dns").innerHTML = WARNING;
                   }
                   else {
                      if (DATA=="try reverse dns tool for ipaddress")
                      {
-                        var ERROR_classA = "undefined"
+                        var ERROR_classA = "ERROR: ONLY FOR HOSTNAME!"
                         document.getElementById("output_dns").innerHTML = ERROR_classA 
                      }
                      else {
                        if (DATA=="error input invalid - enter IP or Hostname")
                        {
-                          var ERROR_classB = "undefined"
+                          var ERROR_classB = "ERROR: INVALID INPUT!"
                           document.getElementById("output_dns").innerHTML = ERROR_classB
                        }
                        else {
