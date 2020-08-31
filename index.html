@@ -118,7 +118,7 @@
          }
          else
           {
-            $.get('https://api.scrapestack.com/scrape?access_key=642e8723f1e9888f60c5859e0273df86&url=https://api.hackertarget.com/reverseiplookup/?q=' + HOST1, function(DATA) {
+            $.get('https://api.scraperapi.com/?api_key=27c6bbde3df6213309b4184db5b4c628&url=https://api.hackertarget.com/reverseiplookup/?q=' + HOST1, function(DATA) {
             document.getElementById("output_look").innerHTML = "<pre>" + DATA + "</pre>";
             if (DATA=="error check your search parameter")
             {
@@ -139,19 +139,12 @@
                      document.getElementById("output_look").innerHTML = WARNING;
                   }
                   else {
-                     if (DATA=="[object Object]")
-                     {
-                        var ERROR_classF = "undefined"
-                        document.getElementById("output_look").innerHTML = ERROR_classF;
-                     }
-                     else {
-                        if (DATA=="No DNS A records found for 172.253.122.106")
-                        {
-                           var WARNING = "undefined"
-                           document.getElementById("output_look").innerHTML = WARNING;
-                        }
-                     }
-                  }
+                    if (DATA=="No DNS A records found for 172.253.122.106")
+                    {
+                       var WARNING = "undefined"
+                       document.getElementById("output_look").innerHTML = WARNING;
+                    }
+                 }
                }
             }
             });
@@ -171,7 +164,7 @@
          }
          else
           {
-            $.get('https://api.scrapestack.com/scrape?access_key=642e8723f1e9888f60c5859e0273df86&url=https://api.hackertarget.com/dnslookup/?q=' + HOST2, function(DATA) {
+            $.get('https://api.scraperapi.com/?api_key=27c6bbde3df6213309b4184db5b4c628&url=https://api.hackertarget.com/dnslookup/?q=' + HOST2, function(DATA) {
             document.getElementById("output_dns").innerHTML = "<pre>" + DATA + "</pre>";
             if (DATA=="error check your search parameter")
             {
@@ -198,22 +191,15 @@
                         document.getElementById("output_dns").innerHTML = ERROR_classA 
                      }
                      else {
-                        if (DATA=="[object Object]")
-                        {
-                           var ERROR_classF = "undefined"
-                           document.getElementById("output_dns").innerHTML = ERROR_classF;
-                        }
-                        else {
-                           if (DATA=="error input invalid - enter IP or Hostname")
-                           {
-                              var ERROR_classB = "undefined"
-                              document.getElementById("output_dns").innerHTML = ERROR_classB
-                           }
-                           else {
-                              // PASS
-                           }
-                        }
-                  }
+                       if (DATA=="error input invalid - enter IP or Hostname")
+                       {
+                          var ERROR_classB = "undefined"
+                          document.getElementById("output_dns").innerHTML = ERROR_classB
+                       }
+                       else {
+                          // PASS
+                       }
+                    }
                   }
                }
             }
