@@ -97,19 +97,13 @@
           }
       }
       var COUNT = 0;
-      function SLEEP_POINT(SECS) {
-         SECS *= 1000;
-         var DATEL = new Date();
-         DATEL = DATEL.getTime();
-         do {
-            var DATEL2 = new Date();
-         } while (DATEL2.getTime() - DATEL < SECS);
-      }
       function CHECK_2()
       {
          var HOST1 = document.getElementById("RE_IPLOOK").value;
          if (COUNT++ > 1)
          {
+           var WARNING = "REACHED LIMIT!"
+           document.getElementById("output_dns").innerHTML = WARNING;
            document.location.reload(true);
            SLEEP_POINT(5)
          }
@@ -158,8 +152,9 @@
          var HOST2 = document.getElementById("DNS_IPLOOK").value;
          if (COUNT++ > 1)
          {
+           var WARNING = "REACHED LIMIT!"
+           document.getElementById("output_dns").innerHTML = WARNING;
            document.location.reload(true);
-           SLEEP_POINT(5)
          }
          if(HOST2=='')
          {
