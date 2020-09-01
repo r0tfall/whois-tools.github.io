@@ -80,6 +80,8 @@
          }
          else
           {
+          	var ERROR = "LOADING!"
+            document.getElementById("hostname").innerHTML = ERROR;
             $.getJSON('https://json.geoiplookup.io/' + HOST, function(DATA) {
             $('#hostname').html("<center>HOST: " + DATA.hostname + "</center>");
             $('#isp').html("<center>ISP: " + DATA.isp + "</center>");
