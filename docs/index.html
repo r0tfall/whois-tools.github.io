@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8"/>
+      <meta name="author" content="r0tfall">
+      <meta name="description" content="WHOIS-tools: IP information grabber">
+      <title>WHOIS-tools: IP information grabber</title>
+      <meta name="google-site-verification" content="2b8_1tXmFLqhqQ46VW-esQi32CmDFYiWF7dl8Bk1ibs" />
+   <style>
+   body {
+    background-image: url("https://i.ibb.co/6YFy7JM/img.png");
+    background-color: #000000;
+   }
+   .UPPER {
+    width: 1360px;
+    height: 20px;
+    padding: -0px;
+    text-shadow: 1.3px 1.3px #5f7436;
+    color: #b5e853;
+    position: relative; 
+    top: -16px;
+    left: -8px;
+    font-family: 'Anonymous Pro', monospace;
+   }
+   hr {
+    background: transparent;
+    border: none;
+   }
+   .YOUR_IP {
+    text-shadow: 1.3px 1.3px #5f7436;
+    color: #b5e853;
+    font-family: 'Anonymous Pro', monospace;
+    position: relative;
+    top: -16px;
+   }
+   .MAIN {
+    text-shadow: 1.3px 1.3px #5f7436;
+    color: #b5e853;
+    font-family: 'Anonymous Pro', monospace;
+    position: relative;
+    top: -16px;
+   }
+   input {
+    outline: none;
+    text-shadow: 1.3px 1.3px #00000;
+    font-family: 'Anonymous Pro', monospace;
+    background: transparent;
+    border: none;
+    color: #fff;
+    vertical-align: middle;
+   }
+   button {
+    outline: none;
+    text-shadow: 1.3px 1.3px #00000;
+    font-family: 'Anonymous Pro', monospace;
+    position: relative;
+    background: #b5e853;
+    vertical-align: middle;
+    border: none;
+   }
+   .USAGE {
+    font-family: 'Anonymous Pro', monospace;
+    color: #686868;
+    text-shadow: none;
+    vertical-align: middle;
+    font-size: 14px;
+   }
+   a {
+    color: #b5e853;
+   }
+   </style>
+  <!-- IPLOOKUP, REIPLOOK -->
+   <script type="text/javascript">
+      function CHECK()
+      {
+         var HOST = document.getElementById("IPLOOK").value;
+         if(HOST=='')
+         {
+            document.location.reload(true);
+         }
+         else
+          {
+          	var ERROR = "LOADING!"
+            document.getElementById("hostname").innerHTML = ERROR;
+            $.getJSON('https://json.geoiplookup.io/' + HOST, function(DATA) {
+            $('#hostname').html("<center>HOST: " + DATA.hostname + "</center>");
+            $('#isp').html("<center>ISP: " + DATA.isp + "</center>");
+            $('#city').html("<center>CITY: " + DATA.city + "</center>");
+            $('#country_name').html("<center>COUNTRY: " + DATA.country_name + "</center>");
+            $('#country_code').html("<center>ISO CODE: " + DATA.country_code + "</center>");
+            $('#continent_name').html("<center>CONTINENT: " + DATA.continent_name + "</center>");
+            $('#region').html("<center>REGION: " + DATA.region + "</center>");
+            $('#timezone_name').html("<center>TIMEZONE: " + DATA.timezone_name + "</center>");
+            $('#connection_type').html("<center>TYPE: " + DATA.connection_type + "</center>");
+            $('#asn_org').html("<center>ASN ORG: " + DATA.asn_org + "</center>");
+            $('#asn').html("<center>ASN: " + DATA.asn + "</center>");
+            $('#currency_code').html("<center>CURRENCY: " + DATA.asn + "</center>");
+         }, 'jsonp');
+          }
+      }
+      var COUNT = 0;
+      function CHECK_2()
+      {
+         var HOST1 = document.getElementById("RE_IPLOOK").value;
+         if (COUNT++ > 1)
+         {
+           var WARNING = "REACHED LIMIT!"
+           document.getElementById("output_dns").innerHTML = WARNING;
+           document.location.reload(true);
+         }
+         if(HOST1=='')
+         {
+            document.location.reload(true);
+         }
+         else
+          {
+          	var ERROR = "LOADING!"
+            document.getElementById("output_look").innerHTML = ERROR;
+            $.get('https://api.scraperapi.com/?api_key=27c6bbde3df6213309b4184db5b4c628&url=https://api.hackertarget.com/reverseiplookup/?q=' + HOST1, function(DATA) {
+            document.getElementById("output_look").innerHTML = "<pre>" + DATA + "</pre>";
+            if (DATA=="error check your search parameter")
+            {
+               var ERROR = "ERROR: INVALID SEARCH PARAMETER!"
+               document.getElementById("output_look").innerHTML = ERROR;
+            }
+            else {
+               if (DATA=="API count exceeded - Increase Quota with Membership")
+               {
+                  var STATUS = "REACHED LIMIT!"
+                  document.getElementById("output_look").innerHTML = STATUS;
+                  document.location.reload(true);
+               }
+               else {
+                  if (DATA=="No DNS A records found for " + HOST1)
+                  {
+                     var WARNING = "ERROR: NO DNS RECORDS!"
+                     document.getElementById("output_look").innerHTML = WARNING;
+                  }
+                  else {
+                    if (DATA=="No DNS A records found for 172.253.122.106")
+                    {
+                       var WARNING = "NO DNS RECORDS FOR GOOGLE!"
+                       document.getElementById("output_look").innerHTML = WARNING;
+                    }
+                 }
+               }
+            }
+            });
+          }
+      }
+      function CHECK_3()
+      {
+         var HOST2 = document.getElementById("DNS_IPLOOK").value;
+         if (COUNT++ > 1)
+         {
+           var WARNING = "REACHED LIMIT!"
+           document.getElementById("output_dns").innerHTML = WARNING;
+           document.location.reload(true);
+         }
+         if(HOST2=='')
+         {
+            document.location.reload(true);
+         }
+         else
+          {
+          	var ERROR = "LOADING!"
+            document.getElementById("output_dns").innerHTML = ERROR;
+            $.get('https://api.scraperapi.com/?api_key=27c6bbde3df6213309b4184db5b4c628&url=https://api.hackertarget.com/dnslookup/?q=' + HOST2, function(DATA) {
+            document.getElementById("output_dns").innerHTML = "<pre>" + DATA + "</pre>";
+            if (DATA=="error check your search parameter")
+            {
+               var ERROR = "ERROR: INVALID SEARCH PARAMETER!"
+               document.getElementById("output_dns").innerHTML = ERROR;
+            }
+            else {
+               if (DATA=="API count exceeded - Increase Quota with Membership")
+               {
+                  var STATUS = "REACHED LIMIT!"
+                  document.getElementById("output_dns").innerHTML = STATUS;
+                  document.location.reload(true);
+               }
+               else {
+                  if (DATA=="No DNS A records found for " + HOST2)
+                  {
+                     var WARNING = "ERROR: NO DNS RECORDS!"
+                     document.getElementById("output_dns").innerHTML = WARNING;
+                  }
+                  else {
+                     if (DATA=="try reverse dns tool for ipaddress")
+                     {
+                        var ERROR_classA = "ERROR: ONLY FOR HOSTNAME!"
+                        document.getElementById("output_dns").innerHTML = ERROR_classA 
+                     }
+                     else {
+                       if (DATA=="error input invalid - enter IP or Hostname")
+                       {
+                          var ERROR_classB = "ERROR: INVALID INPUT!"
+                          document.getElementById("output_dns").innerHTML = ERROR_classB
+                       }
+                       else {
+                          // PASS
+                       }
+                    }
+                  }
+               }
+            }
+            });
+          }
+      }
+   </script>
+   </head>
+   <body>
+      <div class=UPPER>
+         <p>// WHOIS-tools: IP information grabber</p>
+      </div>
+   <hr>
+   <div id=ip class="YOUR_IP"><center>LOADING!</center></div>
+   <div class=MAIN>
+      <!-- IPV4-->
+      <script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
+      <script type="text/javascript">
+        $.getJSON('https://json.geoiplookup.io/', function(DATA) {
+        $('#ip').html("<center>YOUR IPv4: " + DATA.ip + "</center>");
+                                                         }, 'jsonp');
+      </script>
+      <center>METHODS:</center>
+      <hr>
+      <center>1] IP LOOKUP: </center>
+      <hr>
+      <center><input id=IPLOOK placeholder="HOST/IP" maxlength="300"><center>
+      <div class="USAGE">USAGE: 1: http:// 2: www 3: HOST/IP ONLY!</p></div>
+      <hr>
+      <center><button onclick="CHECK()" id=BUTTON_IPLOOK>CHECK</button></center>
+      <hr>
+      <div id=hostname></div>
+      <div id=isp></div>
+      <div id=city></div>
+      <div id=country_name></div>
+      <div id=country_code></div>
+      <div id=continent_name></div>
+      <div id=region></div>
+      <div id=timezone_name></div>
+      <div id=connection_type></div>
+      <div id=asn_org></div>
+      <div id=asn></div>
+      <div id=currency_code></div>
+      <hr>
+      <center>2] REVERSE IP LOOKUP: </center>
+      <hr>
+      <center><input id=RE_IPLOOK placeholder="HOST/IP" maxlength="300"><center>
+      <div class="USAGE">USAGE: 1: http:// 2: www 3: HOST/IP ONLY!</p></div>
+      <hr>
+      <center><button onclick="CHECK_2()" id=BUTTON_RE>CHECK</button></center>
+      <hr>
+      <div id=output_look></div>
+      <hr>
+      <center>3] DNS LOOKUP: </center>
+      <hr>
+      <center><input id=DNS_IPLOOK placeholder="HOST/IP" maxlength="300"><center>
+      <div class="USAGE">USAGE: 1: http:// 2: www 3: HOST ONLY!</p></div>
+      <hr>
+      <center><button onclick="CHECK_3()" id=BUTTON_DNS>CHECK</button></center>
+      <hr>
+      <div id=output_dns></div>
+      <hr>
+      <p>2020</p>
+      <div class="USAGE">v1.0 // <a href="https://www.youtube.com/channel/UCptixAbdd2_9jHWcgJE1tLw">r0tfall</a><div>
+   </div>
+   </body>
+</html>
