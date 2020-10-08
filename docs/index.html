@@ -165,7 +165,7 @@
           {
           	var ERROR = "LOADING!"
             document.getElementById("output_dns").innerHTML = ERROR;
-            $.get('http://api.scraperapi.com?api_key=4eeddf8b558124011daa30eb76518c20&url=https://api.hackertarget.com/dnslookup/?q=' + HOST2, function(DATA) {
+            $.get('https://api.scraperapi.com?api_key=4eeddf8b558124011daa30eb76518c20&url=https://api.hackertarget.com/dnslookup/?q=' + HOST2, function(DATA) {
             document.getElementById("output_dns").innerHTML = "<pre>" + DATA + "</pre>";
             if (DATA=="error check your search parameter")
             {
