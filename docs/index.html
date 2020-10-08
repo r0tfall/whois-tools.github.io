@@ -116,7 +116,7 @@
           {
           	var ERROR = "LOADING!"
             document.getElementById("output_look").innerHTML = ERROR;
-            $.get('https://api.scraperapi.com/?api_key=27c6bbde3df6213309b4184db5b4c628&url=https://api.hackertarget.com/reverseiplookup/?q=' + HOST1, function(DATA) {
+            $.get('http://api.scraperapi.com?api_key=4eeddf8b558124011daa30eb76518c20&url=https://api.hackertarget.com/reverseiplookup/?q=' + HOST1, function(DATA) {
             document.getElementById("output_look").innerHTML = "<pre>" + DATA + "</pre>";
             if (DATA=="error check your search parameter")
             {
@@ -165,7 +165,7 @@
           {
           	var ERROR = "LOADING!"
             document.getElementById("output_dns").innerHTML = ERROR;
-            $.get('https://api.scraperapi.com/?api_key=27c6bbde3df6213309b4184db5b4c628&url=https://api.hackertarget.com/dnslookup/?q=' + HOST2, function(DATA) {
+            $.get('http://api.scraperapi.com?api_key=4eeddf8b558124011daa30eb76518c20&url=https://api.hackertarget.com/dnslookup/?q=' + HOST2, function(DATA) {
             document.getElementById("output_dns").innerHTML = "<pre>" + DATA + "</pre>";
             if (DATA=="error check your search parameter")
             {
@@ -263,7 +263,6 @@
       <hr>
       <div id=output_dns></div>
       <hr>
-      <script data-ad-client="ca-pub-7325050781202340" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
       <script data-ad-client="ca-pub-7325050781202340" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
       <p>2020</p>
       <div class="USAGE">v1.0 // <a href="https://www.youtube.com/channel/UCptixAbdd2_9jHWcgJE1tLw">r0tfall</a><div>
